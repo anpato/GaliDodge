@@ -108,13 +108,7 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
 });
-var count_particles, stats, update;
-stats = new stats;
-stats.setMode(0);
-stats.domElement.style.position = 'absolute';
-stats.domElement.style.left = '0px';
-stats.domElement.style.top = '0px';
-document.body.appendChild(stats.domElement);
+let count_particles, update;
 count_particles = document.querySelector('.js-count-particles');
 update = function () {
     stats.begin();
