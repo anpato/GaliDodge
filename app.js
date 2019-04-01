@@ -1,16 +1,13 @@
-let body = document.getElementsByName('body');
-
+let canvas = document.querySelector('.game-area');
 let player = document.querySelector('.player');
-let minion = document.querySelector('.minion');
-let leader = document.querySelector('.leader');
 
-for(let i=0; i< 5; i++){
-        let newMin = document.createElement('img');
-        newMin.src = './galiga icons/red.png';
-        console.log(newMin);
-        body.appendChild =newMin;
-        console.log(newMin)
-        newMin.classList.add('minion');
-        newMin.style.gridColumn = '6';
+const board = [
+    {x:0,y:0},
     
-}
+]
+
+
+document.querySelector('body').addEventListener('keydown', event=> {
+player.style.top = '100px'
+    
+})

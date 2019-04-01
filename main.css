@@ -58,6 +58,7 @@ body {
     color: #f4f4f4;
     width: 100%;
     height: 100vh;
+    text-align: center;
 }
 
 .start {
@@ -112,12 +113,10 @@ header {
 }
 
 .game-area {
-    height: 100%;
-    width: 100%;
-    margin: auto 20px;
-    display: grid;
-    grid-template-columns: repeat(60, 32px);
-    grid-template-rows: repeat(34, 32px);
+    margin: auto auto;
+    position: relative;
+    height: 600px;
+    width: 600px;
 }
 
 .player {
@@ -126,15 +125,11 @@ header {
     grid-row: 26;
     height: 32px;
     width: 32px;
+    top: 550px;
 }
 
-.leader {
-    height: 32px;
-    width: 32px;
+.player {
+    position: absolute;
 }
 
-.minion {
-    height: 32px;
-    width: 32px;
-}
 
