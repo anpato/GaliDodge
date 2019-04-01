@@ -15,16 +15,18 @@ function preload(){
 
 function setup() {
     createCanvas(600,600);
-    player = createSprite(width / 2, height - 25, 50, 50)
+    player = createSprite(width / 2, height - 30, 0, 0)
     player.addImage(playerImage)
-    enemy = createSprite(width / 2, height/ 50,50);
+    enemy = createSprite(width / 2, 0, 0,0);
     enemy.addImage(enemyImage);
-    enemy2 = createSprite(width / 2, height/ 50,50);
+    enemy2 = createSprite(width / 2, 0, 0,0);
     enemy2.addImage(enemy2Image);
-    //  player.addImage(img);
+    
 }
 
 function draw() {
     background(0,0,0, 0)
     drawSprites();
+
+
 }
