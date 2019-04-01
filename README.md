@@ -8,6 +8,9 @@ Use your arrow keys to move side to side to avoid the blocks. You only get one c
 
 Enjoy! 
 
+Built Using HTML, CSS and Javascript.
+The P5Js Library was also used to control acceleration rates more efficiently.
 
+The struggles will be rendering a number of walls and randomly positioning to make the game challenging and engaging.
 
 
