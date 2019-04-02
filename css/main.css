@@ -119,9 +119,7 @@ header {
 
 #defaultCanvas0 {
     margin: auto;
-   position: absolute;
-   z-index: 0;
+   position: relative;
     top: 10%;
     left: 30%;
-    background: transparent;
 }
