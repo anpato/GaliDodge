@@ -12,16 +12,27 @@
 </head>
 
 <body>
-    <audio autoplay> <source src="./audio/Galaga Medley - Super Smash Bros. Ultimate Music Extended.mp3" type="audio/mpeg"></audio>
+    <!-- <audio autoplay> <source src="./audio/Galaga Medley - Super Smash Bros. Ultimate Music Extended.mp3" type="audio/mpeg"></audio> -->
     <div id="particles-js">
         <div id="container" class="start">
             <h3>GaliDodge</h3>
             <h6>Welcome Player 1</h6>
             <a href="./pages/level1.html">Start</a>
-            <a href="#">Instructions</a>
+            <a href="javascript: toggleInstructions()"class="open-instr">Instructions</a>
+            <div class="instructions">
+                <h4>Instructions</h3>
+                <p>How fast can you react?
+                </p>
+                <p>Move your ship from side to side.</br>
+                    Dodge the incoming aliens!</br>
+                    The longer you last the more points you score!</p>
+                    <p>Use your left and right arrow keys to move your ship.</p>
+                    <a href="javascript: toggleInstructions()" class="exit">Exit</a>
+                </div>
         </div>
     </div>
     <script type="text/javascript" src="./js/particles.js"></script>
+    <script type='text/javascript' src="./js/dom.js"></script>
 </body>
 
 </html>

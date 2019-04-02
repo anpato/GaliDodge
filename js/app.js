@@ -2,6 +2,9 @@ let scoreBoard = document.querySelector('.scoreboard');
 let modal = document.querySelector('.modal');
 let btn = document.createElement('button');
 let ptag = document.createElement('p');
+let openInst = document.querySelector('.open-instr');
+let instructions = document.querySelector('.instructions');
+let closeInst = document.querySelector('.exit');
 // console.log(scoreBoard);
 //P5 Methods
 let player
@@ -96,7 +99,15 @@ function createNewSprites(){
     newSprite = setInterval(createSprite(random(width),random(height)),3000);
     console.log(newSprite);
 }
+
+const toggleInstructions = () => {
+    instructions.classList.toggle('show');
+}
+
+openInst.addEventListener('click', toggleInstructions)
+closeInst.addEventListener('click', toggleInstructions)
+
 btn.addEventListener('click', (event)=> {
     event.preventDefault;
     restart()
-})
+});

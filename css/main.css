@@ -94,6 +94,36 @@ animation: toggleColor 0.3s ease infinite;
 audio > controls {
     display: none;
 }
+
+.instructions {
+    position: absolute;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 2%;
+    left: -80%;
+    transition: all 0.3s;
+}
+
+.show {
+
+    left:10%;
+}
+
+.instructions h4 {
+    margin-top: 2em;
+    font-size: 1.4em;
+}
+
+.instructions p {
+    margin: 4em;
+    line-height: 1.9;
+}
+
+.instructions a {
+    top: 0;
+}
 /*game page*/
 
 header {
