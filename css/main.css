@@ -3,7 +3,10 @@ body {
     background-color: #212121;
     overflow: hidden;
 }
-
+a {
+    color: #f4f4f4;
+    text-decoration: none;
+}
 /*Particles Styling*/
 /*#particles-js {
     position: absolute;
@@ -136,6 +139,47 @@ header {
     display: block;
     float: left;
     margin: 20px;
+}
+
+.menu {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 40px;
+    width: 160px;
+    height: 200px;
+    position: absolute;
+    transform: translateX(-160px);
+    transition: all 0.4s;
+}
+
+.slide {
+    transform: translateX(0);
+}
+
+.menu ul {
+    margin-top: 2rem;
+}
+
+.menu li {
+    padding: 1rem;
+}
+
+.menu a {
+    padding: 1rem;
+    transition: all 0.2s;
+
+}
+
+@keyframes menuA {
+    from {
+        color: #f4f4f4;
+    }
+    to {
+        color: #d32f2f;
+    }
+}
+
+.menu .slide a:hover {
+    animation: menuA ease infinite
 }
 
 .scoreboard {

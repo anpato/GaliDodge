@@ -2,9 +2,7 @@ let scoreBoard = document.querySelector('.scoreboard');
 let modal = document.querySelector('.modal');
 let btn = document.createElement('button');
 let ptag = document.createElement('p');
-let openInst = document.querySelector('.open-instr');
-let instructions = document.querySelector('.instructions');
-let closeInst = document.querySelector('.exit');
+
 // console.log(scoreBoard);
 //P5 Methods
 let player
@@ -28,8 +26,7 @@ function setup() {
     player.addImage(playerImage)
     enemy = createSprite(width / 20, 20, height / 2, 10);
     enemy2 = createSprite(width / 10, 5, height / 2, 5);
-    enemy3 = createSprite(width / 5, 5, height / 6, 2);
-    
+    enemy3 = createSprite(width / 5, 5, height / 6, 2); 
 }
 
 function draw() {
@@ -100,14 +97,3 @@ function createNewSprites(){
     console.log(newSprite);
 }
 
-const toggleInstructions = () => {
-    instructions.classList.toggle('show');
-}
-
-openInst.addEventListener('click', toggleInstructions)
-closeInst.addEventListener('click', toggleInstructions)
-
-btn.addEventListener('click', (event)=> {
-    event.preventDefault;
-    restart()
-});
