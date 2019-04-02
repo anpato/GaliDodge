@@ -22,9 +22,10 @@ function setup() {
     enemy2 = createSprite(random(width), random(height),random(10,100), random(1-60));
     enemy3 = createSprite(random(width), random(height),random(10,250), random(5-100));
     frameRate(60);
+
 }
     function draw() {
-        // background(255, 255, 255)
+        background(33, 33, 33)
         clear()
         //random enemy sizes
 
@@ -34,8 +35,7 @@ function setup() {
         if (keyDown(LEFT_ARROW) && player.position.x > 25) {
             player.position.x = player.position.x - 7
         }
-        frameRate(60);
-        enemy.position.y = enemy.position.y +random(10);
+        enemy.position.y = enemy.position.y + 7;
         enemy2.position.y = enemy2.position.y + 5;
         enemy3.position.y = enemy3.position.y + 8;
         if (enemy.position.y > height + 100) {
@@ -53,10 +53,10 @@ function setup() {
     
         if(isGameOver){
             gameOver()
-        } else{
+        }
         if(enemy.overlap(player)||enemy2.overlap(player)||enemy3.overlap(player)){
             isGameOver = true
-        }}
+        }
         drawSprites();
     }
 
