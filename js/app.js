@@ -10,7 +10,7 @@ let enemy2
 let score =0;
 
 function preload() {
-    playerImage = loadImage('./icons/player.png');
+    playerImage = loadImage('../icons/player.png');
 }
 
 function setup() {
