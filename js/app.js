@@ -38,15 +38,11 @@ function setup() {
         enemy.position.y = enemy.position.y + 7;
         enemy2.position.y = enemy2.position.y + 5;
         enemy3.position.y = enemy3.position.y + 8;
-        if (enemy.position.y > height + 100) {
+        if (enemy.position.y > height + 100 && enemy2.position.y > height + 100 && enemy3.position.y > 100) {
             enemy.position.y = 0
             enemy.position.x = random(5, width - 5)
-        }
-        if (enemy2.position.y > height + 100) {
             enemy2.position.y = 0
             enemy2.position.x = random(5, width - 5)
-        }
-        if (enemy3.position.y > height + 100) {
             enemy3.position.y = 0
             enemy3.position.x = random(5, width - 5)
         }
