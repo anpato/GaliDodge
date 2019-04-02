@@ -141,6 +141,8 @@ header {
 .modal button {
     font-family: 'Press Start 2p';
     color: #f4f4f4;
+    text-align: center;
+    margin: auto;
     background-color: rgba(0, 0, 0, 0.6);
     animation: toggleBtn 0.4s infinite;
     padding: 1em 2em;
@@ -162,7 +164,7 @@ header {
 
 #defaultCanvas0 {
     margin: auto;
-   position: absolute;
+    position: absolute;
     top: 10%;
     left: 30%;
 }

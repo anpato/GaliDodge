@@ -18,9 +18,9 @@ function preload() {
 }
 
 function setup() {
+    isGameOver = false
     createCanvas(600, 600);
     frameRate(120);
-    isGameOver = false
     player = createSprite(width / 2, height - 30, 20, 20)
     player.addImage(playerImage)
     enemy = createSprite(width / 20, 20, height / 2, 10);
@@ -31,9 +31,13 @@ function setup() {
 
 function draw() {
     // setInterval(createNewSprites(), 300000);
-    background(33,33,33)
-    // clear();
-
+    
+    if (isGameOver) {
+        gameOver()
+    }else {
+    if (enemy.overlap(player) || enemy2.overlap(player) || enemy3.overlap(player)) {
+        isGameOver = true
+    }
     
     if (keyDown(RIGHT_ARROW) && player.position.x < width - 30) {
         player.position.x = player.position.x + 10
@@ -55,36 +59,34 @@ function draw() {
         enemy3.position.y = 0
         enemy3.position.x = random(10, width - 5)
     }
-    if (isGameOver) {
-        gameOver()
-    }else {
-    if (enemy.overlap(player) || enemy2.overlap(player) || enemy3.overlap(player)) {
-        isGameOver = true
-    }}
-    
+}
+    background(33,33,33);
     drawSprites();
-    
 }
 
-function gameStart() {
-    started = true
-
+function restart(){
+    if(isGameOver){
+    isGameOver = false;
+    player.position.x = width /2;
+    player.position.y = height - 30;
+    enemy.position.y = 0;
+    enemy2.position.y = 0;
+    enemy3.position.y = 0}
 }
 
 function gameOver() {
+    restart()
     modal.classList.add('active');
-
     modal.appendChild(ptag);
-    modal.appendChild(btn);
-
-    score.pause    
+    modal.appendChild(btn);   
     ptag.innerText = score;
     btn.innerText = 'Restart'
     
     background(0);
     noLoop()
-}
+    
 
+}
 function incrementScore() {
     score += 50
     scoreBoard.innerText = score;
@@ -92,9 +94,10 @@ function incrementScore() {
 
 function createNewSprites(){
     newSprite = setInterval(createSprite(random(width),random(height)),3000);
-
     console.log(newSprite);
-    
 }
 
-btn.addEventListener('click', setup)
+btn.addEventListener('click', (event)=> {
+    event.preventDefault;
+    console.log(restart);
+})
