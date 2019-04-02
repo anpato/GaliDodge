@@ -34,7 +34,8 @@ function draw() {
     
     if (isGameOver) {
         gameOver()
-    }else {
+    }
+    else {
     if (enemy.overlap(player) || enemy2.overlap(player) || enemy3.overlap(player)) {
         isGameOver = true
     }
@@ -71,33 +72,31 @@ function restart(){
     player.position.y = height - 30;
     enemy.position.y = 0;
     enemy2.position.y = 0;
-    enemy3.position.y = 0}
+    enemy3.position.y = 0;
+    }
+    modal.classList.remove('active');
+    loop();
 }
 
 function gameOver() {
-    restart()
+    // restart()
     modal.classList.add('active');
     modal.appendChild(ptag);
     modal.appendChild(btn);   
     ptag.innerText = score;
     btn.innerText = 'Restart'
-    
     background(0);
     noLoop()
-    
-
 }
 function incrementScore() {
     score += 50
     scoreBoard.innerText = score;
 }
-
 function createNewSprites(){
     newSprite = setInterval(createSprite(random(width),random(height)),3000);
     console.log(newSprite);
 }
-
 btn.addEventListener('click', (event)=> {
     event.preventDefault;
-    console.log(restart);
+    restart()
 })
