@@ -59,10 +59,10 @@ function draw() {
             console.log(score);
             index.position.y = 0;
             index.position.x = random(10, width - 5);
+
         }
     }
     background(33, 33, 33);
-    // clear()
     drawSprites();
 };
 
