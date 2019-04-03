@@ -166,7 +166,6 @@ header {
 .menu a {
     padding: 1rem;
     transition: all 0.2s;
-
 }
 
 @keyframes menuA {
@@ -178,8 +177,8 @@ header {
     }
 }
 
-.menu .slide a:hover {
-    animation: menuA ease infinite
+.slide a:hover {
+    animation: menuA infinite 0.3s;
 }
 
 .scoreboard {

@@ -73,6 +73,7 @@ function restart(){
     enemy.position.y = 0;
     enemy2.position.y = 0;
     enemy3.position.y = 0;
+    score=0
     }
     modal.classList.remove('active');
     loop();
