@@ -7,6 +7,19 @@ a {
     color: #f4f4f4;
     text-decoration: none;
 }
+
+audio {
+    position: absolute;
+    height: 2rem;
+    top: 95%;
+    z-index: 1000;
+    opacity: 0.1;
+    transition: all 0.4s;
+}
+
+audio:hover {
+    opacity: 1;
+}
 /*Particles Styling*/
 /*#particles-js {
     position: absolute;
@@ -33,26 +46,19 @@ a {
     position: absolute;
     height: 100vh;
     width: 100vw;
-    z-index: 1;
-    animation: showMain 16s;
-    transition: ease-out 16s;
+    animation: showMain 10s;
+    transition: ease-out 10s;
 }
 
 @keyframes showMain {
     from {
         background-color: rgba(0, 0, 0, 1);
+        z-index: 4;
     }
     to {
         background-color: rgba(0, 0, 0, 0);
-        z-index: -8;
+        z-index: -16;
     }
-}
-
-audio {
-    position: absolute;
-    height: 2rem;
-    top: 95%;
-    z-index: 1000;
 }
 
 .start {
@@ -113,11 +119,18 @@ audio {
     color: #b0bec5;
     font-size: 1.2em;
     transition: all 0.3s;
+    margin: 2rem;
+    border: 4px dashed #f4f4f4;
+    padding: 1rem;
 }
 
 .start a:hover {
-animation: toggleColor 0.3s ease infinite;
+animation: changeColor 0.3s ease infinite;
     font-size: 1.8em;
+}
+
+.open-instr {
+    margin: 2rem;
 }
 
 audio > controls {
