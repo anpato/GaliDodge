@@ -80,6 +80,7 @@ function gameOver() {
             wallsArr.splice(3, wallsArr.length);
         }
     }
+
     background(0);
     noLoop()
 }
