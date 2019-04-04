@@ -29,6 +29,7 @@ function setup() {
         if(score > 500){
             for(let i=0; i< 2; i++){
                 wallsArr.push(new Walls);
+                this.y = 0;
             }
         }
     }, 5000)
@@ -42,7 +43,6 @@ function draw() {
         wallsArr[i].move();
         wallsArr[i].display();
         wallsArr[i].checkCollision();
-        // wallsArr[i].create();
         wallsArr[i].reset();
     }
     if (isGameOver) {
@@ -75,6 +75,11 @@ function gameOver() {
     modal.appendChild(btn);
     ptag.innerText = score;
     btn.innerText = 'Restart'
+    for(let i=3; i < wallsArr.length; i++){
+        if (wallsArr.length > 3){
+            wallsArr.splice(3, wallsArr.length);
+        }
+    }
     background(0);
     noLoop()
 }
@@ -100,13 +105,13 @@ class Walls {
         }
     }
     reset() {
-        isGameOver === true ? this.y = 0 : null
+        isGameOver === true ? this.y = 0 : null ;
+
     }
     display() {
         rect(this.x, this.y, this.w, this.h);
         fill('#4dd0e1')
     }
-
     checkCollision() {
         let rectX = this.x;
         let rectY = Math.floor(this.y);
@@ -114,9 +119,12 @@ class Walls {
         let rectH = Math.floor(this.h);
         let playerX = player.position.x;
         let playerY = player.position.y;
-        if (playerX > rectX && playerX < rectX + rectW) {
-            if (player.position.y > rectY && playerY < rectY + rectH) {
+        
+        if (playerX + 32 > rectX && playerX - 32 < rectX + rectW) {
+            if (player.position.y + 32 > rectY && playerY -32 < rectY + rectH) {
                 isGameOver = true;
+            }if(isGameOver == true){
+                this.y = 0;
             }
         }
     }
