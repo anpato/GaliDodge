@@ -44,16 +44,13 @@ function draw() {
         obstacle = wallsArr[i]
         wallsArr[i].move();
         wallsArr[i].display();
-        // wallsArr[i].collision()
+        wallsArr[i].checkCollision()
         // console.log(wallsArr[i]);
         // console.log(obstacle);
     }
     if (isGameOver) {
         gameOver()
     } else {
-        if (wallsArr.overlap(player)) {
-            isGameOver = true;
-        }
         if (keyDown(RIGHT_ARROW) && player.position.x < width - 30) {
             player.position.x = player.position.x + 10
         }
@@ -69,7 +66,7 @@ function restart() {
         isGameOver = false;
         player.position.x = width / 2;
         player.position.y = height - 30;
-        index.position.y = 0;
+        wallsArr[i].position.y = 0;
         score = 0
     }
     modal.classList.remove('active');
@@ -91,7 +88,7 @@ function incrementScore() {
     scoreBoard.innerText = score;
 }
 class Walls {
-    constructor() {
+    constructor(x,y) {
         this.x = random(width);
         this.y = random(height);
         this.w = random(width / 20, 180)
@@ -112,9 +109,13 @@ class Walls {
     display() {
         rect(this.x, this.y, this.w, this.h);
     }
-    // collision() {
-    //     if (Walls.overlap(player)){
-    //         isGameOver=true;
-    //     }
-    // }
+    checkCollision(){
+        if(Math.floor(Math.abs(this.y)) === player.position.y){
+            // console.log(Math.floor(Math.abs(this.x)),player.position.y);
+            isGameOver =true;
+        }if(isGameOver == true){
+            this.y = 0;
+        }
+    }
 }
+
