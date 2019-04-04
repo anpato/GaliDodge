@@ -11,7 +11,7 @@ let isGameOver;
 let time = 0;
 let score = 0;
 let wallsArr = [];
-let speed = 3;
+let speed = 6;
 
 
 function preload() {
@@ -41,6 +41,8 @@ function setup() {
 }
 
 function draw() {
+    console.log(speed);
+    
     background(33, 33, 33);
     drawSprites();
     for (let i = 0; i < wallsArr.length; i++) {
@@ -64,8 +66,9 @@ function draw() {
 
 function restart() {
     if (isGameOver) {
-        this.y =0
+        this.y =0;
         score = 0;
+        speed = 0;
         scoreBoard.innerText = 0
         isGameOver = false;
         player.position.x = width / 2;
@@ -94,7 +97,6 @@ function gameOver() {
 const toggleMenu = () => {
     menu.classList.toggle('slide');
     if(menu.classList == 'menu slide'){
-        // console.log('menu-open');
         noLoop()
     }else{
         loop();
@@ -106,15 +108,15 @@ function incrementScore() {
 }
 class Walls {
     constructor() {
-        this.x = Math.floor(random(width));
+        this.x = random(width);
         this.y = random(height > 0);
         this.w = Math.floor(random(width / 60, 180))
         this.h = Math.floor(random(height / 90,50));
-        this.speed = random(speed)
+        this.speed = random(3,speed +6)
     }
     move() {
-        this.x += random(-this.speed, this.speed);
-        this.y += random(+this.speed, this.speed);
+        this.x = random(this.x,this.x);
+        this.y += random(this.speed);
         if (this.y > height + 100) {
             this.y = 0;
             incrementScore();
@@ -135,11 +137,12 @@ class Walls {
         let playerX = player.position.x;
         let playerY = player.position.y;
         
-        if (playerX + 32 > rectX && playerX - 32 < rectX + rectW) {
+        if (playerX + 30 > rectX && playerX - 32 < rectX + rectW) {
             if (player.position.y + 32 > rectY && playerY -32 < rectY + rectH) {
                 isGameOver = true;
             }if(isGameOver == true){
                 this.y = 0;
+                speed = 6;
             }
         }
     }
