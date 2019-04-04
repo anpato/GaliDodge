@@ -55,7 +55,6 @@ function draw() {
             player.position.x = player.position.x - 10
         }
     }
-    console.log(wallsArr.length)
 };
 
 function restart() {
@@ -68,7 +67,6 @@ function restart() {
     modal.classList.remove('active');
     loop();
 }
-
 function gameOver() {
     modal.classList.add('active');
     modal.appendChild(ptag);
@@ -80,11 +78,9 @@ function gameOver() {
             wallsArr.splice(3, wallsArr.length);
         }
     }
-
     background(0);
     noLoop()
 }
-
 function incrementScore() {
     score += 50
     scoreBoard.innerText = score;
@@ -107,7 +103,6 @@ class Walls {
     }
     reset() {
         isGameOver === true ? this.y = 0 : null ;
-
     }
     display() {
         rect(this.x, this.y, this.w, this.h);
