@@ -33,7 +33,7 @@ function setup() {
     //         wallsArr.push(new Walls())
     //     }
     // }, 6000);
-    console.log(player.height);
+    // console.log(player.size);
     
 }
 
@@ -45,8 +45,12 @@ function draw() {
         obstacle = wallsArr[i]
         wallsArr[i].move();
         wallsArr[i].display();
-        wallsArr[i].checkCollision()
-        // console.log(wallsArr[i]);
+        wallsArr[i].checkCollision();
+        wallsArr[i].reset();
+        // console.log(Math.floor(wallsArr[i].position.x));
+        // console.log(Math.floor(wallsArr[i].position.y));
+        //  console.log(Math.floor(wallsArr[i].w));
+        
         // console.log(obstacle);
     }
     if (isGameOver) {
@@ -67,7 +71,6 @@ function restart() {
         isGameOver = false;
         player.position.x = width / 2;
         player.position.y = height - 30;
-        wallsArr[i].position.y = 0;
         score = 0
     }
     modal.classList.remove('active');
@@ -94,8 +97,7 @@ class Walls {
         this.y = random(height);
         this.w = random(width / 20, 180)
         this.h = random(height / 50);
-        this.position = new p5.Vector(this.x, this.y)
-        this.speed = 1;
+        this.speed = random(1,3);
     }
 
     move() {
@@ -103,34 +105,30 @@ class Walls {
         this.y += random(+this.speed, this.speed);
         if (this.y > height + 100) {
             this.y = 0;
-            // incrementScore();
+            incrementScore();
             // console.log(score);
         }
     }
-
+    reset(){
+        isGameOver === true ? this.y=0 : null
+    }
     display() {
-        newShape = rect(this.x, this.y, this.w, this.h);
-        console.log();
+        rect(this.x, this.y, this.w, this.h);
         
     }
     checkCollision(){
-        let cover = this.position;
-        // console.log(cover)
-        console.log(dist.cover);
-        // newShape.collide(player)
-        
-            // console.log(player.vector);
-            
-        
-            // console.log(this.position === player.position.x);
-            
-            // console.log(player.position.x);
-        // if(this.y.overlap(player)){
-        //     console.log(Math.floor(Math.abs(this.x)),player.position.y);
-        //     isGameOver =true;
-        // }if(isGameOver == true){
-        //     this.y = 0;
-        // }
+        let rectX = Math.floor(this.x);
+        let rectY = Math.floor(this.y);
+        let rectW = Math.floor(this.w);
+        let rectH = Math.floor(this.h);
+        let playerCenter = player.position.x / player.position.y
+        let playerX = player.position.x;
+        let playerY = player.position.y;
+        if(playerX > rectX && playerX < rectX+rectW){
+            if(player.position.y > rectY && playerY < rectY+rectH){
+                isGameOver = true;
+            }
+        }
     }
 }
 
