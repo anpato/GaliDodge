@@ -12,12 +12,18 @@
 </head>
 
 <body>
-        <!----<audio autoplay> <source src="../audio/Galaga Theme Remix (as simple as nostalgia itself).mp3" type="audio/mpeg"></audio>-->
+        <audio autoplay controls> <source src="../audio/F-777 - Space Battle.mp3" type="audio/mpeg"></audio>
     <div id="particles-js">
         <div id="container">
             <header>
                 <div class="user">
-                    <h3>Player 1</h3>
+                    <a href="javascript: toggleMenu()"><h3>Player 1</h3></a>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="javascript: toggleMenu()">Resume</a></li>
+                    </ul>
                 </div>
                 <div class="scoreboard">
                     0000
@@ -33,6 +39,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/molleindustria/p5.play@42cd19c3/lib/p5.play.js"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/dom.js"></script>
 </body>
 
 </html>

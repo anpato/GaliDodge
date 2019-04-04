@@ -2,19 +2,17 @@ let scoreBoard = document.querySelector('.scoreboard');
 let modal = document.querySelector('.modal');
 let btn = document.createElement('button');
 let ptag = document.createElement('p');
-let openInst = document.querySelector('.open-instr');
-let instructions = document.querySelector('.instructions');
-let closeInst = document.querySelector('.exit');
-// console.log(scoreBoard);
+
+
 //P5 Methods
 let player
 let playerImage
-let enemy
-let enemy2
-let enemy3;
-let enemy4;
-let score = 0;
 let isGameOver;
+let time = 0;
+let score = 0;
+let wallsArr = [];
+let speed = 3;
+
 
 function preload() {
     playerImage = loadImage('../icons/player.png');
@@ -26,88 +24,123 @@ function setup() {
     frameRate(120);
     player = createSprite(width / 2, height - 30, 20, 20)
     player.addImage(playerImage)
-    enemy = createSprite(width / 20, 20, height / 2, 10);
-    enemy2 = createSprite(width / 10, 5, height / 2, 5);
-    enemy3 = createSprite(width / 5, 5, height / 6, 2);
-    
+    for (let i = 0; i < 3; i++) {
+        wallsArr.push(new Walls())
+    }
+    setInterval(()=> {
+        if(score > 500){
+            for(let i=0; i< 1; i++){
+                this.y = 0;
+                wallsArr.push(new Walls);
+                setInterval(()=> {
+                    speed++
+                }, 10000)                
+            }
+        }
+    }, 5000)
 }
 
 function draw() {
-    // setInterval(createNewSprites(), 300000);
-    
+    background(33, 33, 33);
+    drawSprites();
+    for (let i = 0; i < wallsArr.length; i++) {
+        obstacle = wallsArr[i]
+        wallsArr[i].move();
+        wallsArr[i].display();
+        wallsArr[i].checkCollision();
+        wallsArr[i].reset();
+    }
     if (isGameOver) {
         gameOver()
+    } else {
+        if (keyDown(RIGHT_ARROW) && player.position.x < width - 30) {
+            player.position.x = player.position.x + 10
+        }
+        if (keyDown(LEFT_ARROW) && player.position.x > 30) {
+            player.position.x = player.position.x - 10
+        }
     }
-    else {
-    if (enemy.overlap(player) || enemy2.overlap(player) || enemy3.overlap(player)) {
-        isGameOver = true
-    }
-    
-    if (keyDown(RIGHT_ARROW) && player.position.x < width - 30) {
-        player.position.x = player.position.x + 10
-    }
-    if (keyDown(LEFT_ARROW) && player.position.x > 30) {
-        player.position.x = player.position.x - 10
-    }
-    enemy.position.y = enemy.position.y + 6;
-    enemy2.position.y = enemy2.position.y + 4;
-    enemy3.position.y = enemy3.position.y + 8;
-    
-    if (enemy.position.y > height + 100 && enemy2.position.y > height + 100 && enemy3.position.y > 100) {
-        incrementScore();
-        // console.log(score);
-        enemy.position.y = 0
-        enemy.position.x = random(10, width - 5)
-        enemy2.position.y = 0
-        enemy2.position.x = random(10, width - 5)
-        enemy3.position.y = 0
-        enemy3.position.x = random(10, width - 5)
-    }
-}
-    background(33,33,33);
-    drawSprites();
-}
+};
 
-function restart(){
-    if(isGameOver){
-    isGameOver = false;
-    player.position.x = width /2;
-    player.position.y = height - 30;
-    enemy.position.y = 0;
-    enemy2.position.y = 0;
-    enemy3.position.y = 0;
+function restart() {
+    if (isGameOver) {
+        this.y =0
+        score = 0;
+        scoreBoard.innerText = 0
+        isGameOver = false;
+        player.position.x = width / 2;
+        player.position.y = height - 30;
     }
+    
     modal.classList.remove('active');
     loop();
 }
-
 function gameOver() {
-    // restart()
     modal.classList.add('active');
     modal.appendChild(ptag);
-    modal.appendChild(btn);   
+    modal.appendChild(btn);
     ptag.innerText = score;
     btn.innerText = 'Restart'
+    for(let i=3; i < wallsArr.length; i++){
+        if (wallsArr.length > 3){
+            wallsArr.splice(3, wallsArr.length);
+        }
+    }
+    
     background(0);
     noLoop()
+}
+
+const toggleMenu = () => {
+    menu.classList.toggle('slide');
+    if(menu.classList == 'menu slide'){
+        // console.log('menu-open');
+        noLoop()
+    }else{
+        loop();
+    }
 }
 function incrementScore() {
     score += 50
     scoreBoard.innerText = score;
 }
-function createNewSprites(){
-    newSprite = setInterval(createSprite(random(width),random(height)),3000);
-    console.log(newSprite);
+class Walls {
+    constructor() {
+        this.x = Math.floor(random(width));
+        this.y = random(height > 0);
+        this.w = Math.floor(random(width / 60, 180))
+        this.h = Math.floor(random(height / 90,50));
+        this.speed = random(speed)
+    }
+    move() {
+        this.x += random(-this.speed, this.speed);
+        this.y += random(+this.speed, this.speed);
+        if (this.y > height + 100) {
+            this.y = 0;
+            incrementScore();
+        }
+    }
+    reset() {
+        isGameOver === true ? this.y = 0 : null ;
+    }
+    display() {
+        rect(this.x, this.y, this.w, this.h);
+        fill('#4dd0e1')
+    }
+    checkCollision() {
+        let rectX = this.x;
+        let rectY = Math.floor(this.y);
+        let rectW = Math.floor(this.w);
+        let rectH = Math.floor(this.h);
+        let playerX = player.position.x;
+        let playerY = player.position.y;
+        
+        if (playerX + 32 > rectX && playerX - 32 < rectX + rectW) {
+            if (player.position.y + 32 > rectY && playerY -32 < rectY + rectH) {
+                isGameOver = true;
+            }if(isGameOver == true){
+                this.y = 0;
+            }
+        }
+    }
 }
-
-const toggleInstructions = () => {
-    instructions.classList.toggle('show');
-}
-
-openInst.addEventListener('click', toggleInstructions)
-closeInst.addEventListener('click', toggleInstructions)
-
-btn.addEventListener('click', (event)=> {
-    event.preventDefault;
-    restart()
-});
