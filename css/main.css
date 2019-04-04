@@ -34,8 +34,8 @@ a {
     height: 100vh;
     width: 100vw;
     z-index: 1;
-    animation: showMain 12s;
-    transition: ease-out 12s;
+    animation: showMain 16s;
+    transition: ease-out 16s;
 }
 
 @keyframes showMain {
@@ -44,7 +44,7 @@ a {
     }
     to {
         background-color: rgba(0, 0, 0, 0);
-        z-index: -1;
+        z-index: -8;
     }
 }
 

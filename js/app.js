@@ -3,6 +3,7 @@ let modal = document.querySelector('.modal');
 let btn = document.createElement('button');
 let ptag = document.createElement('p');
 
+
 //P5 Methods
 let player
 let playerImage
@@ -10,6 +11,7 @@ let isGameOver;
 let time = 0;
 let score = 0;
 let wallsArr = [];
+let speed = 3;
 
 
 function preload() {
@@ -27,9 +29,12 @@ function setup() {
     }
     setInterval(()=> {
         if(score > 500){
-            for(let i=0; i< 2; i++){
-                wallsArr.push(new Walls);
+            for(let i=0; i< 1; i++){
                 this.y = 0;
+                wallsArr.push(new Walls);
+                setInterval(()=> {
+                    speed++
+                }, 10000)                
             }
         }
     }, 5000)
@@ -59,11 +64,14 @@ function draw() {
 
 function restart() {
     if (isGameOver) {
+        this.y =0
+        score = 0;
+        scoreBoard.innerText = 0
         isGameOver = false;
         player.position.x = width / 2;
         player.position.y = height - 30;
-        score = 0
     }
+    
     modal.classList.remove('active');
     loop();
 }
@@ -78,8 +86,19 @@ function gameOver() {
             wallsArr.splice(3, wallsArr.length);
         }
     }
+    
     background(0);
     noLoop()
+}
+
+const toggleMenu = () => {
+    menu.classList.toggle('slide');
+    if(menu.classList == 'menu slide'){
+        // console.log('menu-open');
+        noLoop()
+    }else{
+        loop();
+    }
 }
 function incrementScore() {
     score += 50
@@ -87,11 +106,11 @@ function incrementScore() {
 }
 class Walls {
     constructor() {
-        this.x = random(width);
-        this.y = random(height);
-        this.w = random(width / 20, 180)
-        this.h = random(height / 50);
-        this.speed = random(1, 3);
+        this.x = Math.floor(random(width));
+        this.y = random(height > 0);
+        this.w = Math.floor(random(width / 60, 180))
+        this.h = Math.floor(random(height / 90,50));
+        this.speed = random(speed)
     }
     move() {
         this.x += random(-this.speed, this.speed);
