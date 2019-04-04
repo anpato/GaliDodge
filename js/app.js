@@ -12,8 +12,7 @@ let isGameOver;
 let time = 0;
 
 let wallsArr = [];
-let obstacle;
-let index;
+let newShape;
 
 
 function preload() {
@@ -29,11 +28,13 @@ function setup() {
     for (let i = 0; i < 3; i++) {
         wallsArr.push(new Walls())
     }
-    setInterval(() => {
-        for (let i = 0; i < 3; i++) {
-            wallsArr.push(new Walls())
-        }
-    }, 6000);
+    // setInterval(() => {
+    //     for (let i = 0; i < 3; i++) {
+    //         wallsArr.push(new Walls())
+    //     }
+    // }, 6000);
+    console.log(player.height);
+    
 }
 
 
@@ -93,6 +94,7 @@ class Walls {
         this.y = random(height);
         this.w = random(width / 20, 180)
         this.h = random(height / 50);
+        this.position = new p5.Vector(this.x, this.y)
         this.speed = 1;
     }
 
@@ -107,15 +109,28 @@ class Walls {
     }
 
     display() {
-        rect(this.x, this.y, this.w, this.h);
+        newShape = rect(this.x, this.y, this.w, this.h);
+        console.log();
+        
     }
     checkCollision(){
-        if(Math.floor(Math.abs(this.y)) === player.position.y){
-            // console.log(Math.floor(Math.abs(this.x)),player.position.y);
-            isGameOver =true;
-        }if(isGameOver == true){
-            this.y = 0;
-        }
+        let cover = this.position;
+        // console.log(cover)
+        console.log(dist.cover);
+        // newShape.collide(player)
+        
+            // console.log(player.vector);
+            
+        
+            // console.log(this.position === player.position.x);
+            
+            // console.log(player.position.x);
+        // if(this.y.overlap(player)){
+        //     console.log(Math.floor(Math.abs(this.x)),player.position.y);
+        //     isGameOver =true;
+        // }if(isGameOver == true){
+        //     this.y = 0;
+        // }
     }
 }
 
