@@ -20,7 +20,7 @@ function preload() {
 
 function setup() {
     isGameOver = false
-    createCanvas(800, 800);
+    createCanvas(800, 600);
     frameRate(120);
     player = createSprite(width / 2, height - 30, 20, 20)
     player.addImage(playerImage)
