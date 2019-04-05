@@ -41,8 +41,6 @@ function setup() {
 }
 
 function draw() {
-    console.log(speed);
-    
     background(33, 33, 33);
     drawSprites();
     for (let i = 0; i < wallsArr.length; i++) {
