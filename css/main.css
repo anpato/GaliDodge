@@ -229,24 +229,51 @@ header {
 .modal {
     position: absolute;
     z-index: 55;
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 50%;
+    background-color: rgba(0, 0, 0, 0.97);
+    width: 80%;
     height: 80%;
-    top: 10%;
-    left: 25%;
     display: none;
     transition: all 0.3s;
+    margin: auto;
+    left: 10%;
+    border: 2px solid;
+    animation: borderRainbow infinite 2s;
+    border-radius: 2rem; 
+}
+
+@keyframes borderRainbow {
+    0% {
+        border:2px solid #f4f4f4; 
+    }
+    20% {
+        border:2px solid #2196f3;
+    }
+    30% {
+        border:2px solid #303f9f;
+    }
+    50% {
+        border:2px solid #6abf69;
+    }
+    70% {
+        border:2px solid #fff176
+    }
+    90% {
+        border:2px solid #ffb300;
+    }
+    100% {
+        border:2px solid #ffecb3
+    }
 }
 
 .modal h3 {
-    margin-top: 60px;
+    margin-top: 12rem;
     font-size: 4rem;
 }
 
 .modal p {
     margin: 4rem;
     font-size: 2.5rem;
-    animation: changeColor 0.3s infinite;
+    animation: toggleColor 0.3s infinite;
 }
 
 .modal button {
@@ -271,6 +298,7 @@ header {
 
 .active {
     display: block;
+    
 }
 
 #defaultCanvas0 {
