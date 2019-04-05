@@ -20,7 +20,7 @@ function preload() {
 
 function setup() {
     isGameOver = false
-    createCanvas(600, 600);
+    createCanvas(800, 800);
     frameRate(120);
     player = createSprite(width / 2, height - 30, 20, 20)
     player.addImage(playerImage)
@@ -56,10 +56,10 @@ function draw() {
         gameOver()
     } else {
         if (keyDown(RIGHT_ARROW) && player.position.x < width - 30) {
-            player.position.x = player.position.x + 10
+            player.position.x = player.position.x + 12
         }
         if (keyDown(LEFT_ARROW) && player.position.x > 30) {
-            player.position.x = player.position.x - 10
+            player.position.x = player.position.x - 12
         }
     }
 };
