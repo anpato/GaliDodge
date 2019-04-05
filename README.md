@@ -22,3 +22,5 @@ https://github.com/anpato/week-one-project/files/3029661/Game.Board.2.pdf
 https://github.com/anpato/week-one-project/files/3029662/Game.Board.pdf
 https://github.com/anpato/week-one-project/files/3029660/Game.Board.1.pdf
 
+#### Credit To Vincent Garreau
+A huge credit to this gentleman for creating an awesome particle system, be sure to check him out on Github at: https://github.com/VincentGarreau/particles.js/
