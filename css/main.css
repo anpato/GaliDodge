@@ -237,7 +237,7 @@ header {
     margin: auto;
     left: 10%;
     border: 2px solid;
-    animation: borderRainbow infinite 2s;
+    animation: borderRainbow infinite 2s reverse;
     border-radius: 2rem; 
 }
 
